@@ -63,13 +63,37 @@
 </head>
 <body>
 
+    <div class="container" id="header">
+    <h1> Concerned about your health?</h1>
+    <h3> Start your online health check-up</h3><hr>
+        
+    </div>
+
     <div class="container">        
     
 
     <form role="form"  method="POST" action="index.php">
+
+
+
+        <div class="form-group col-sm-6 col-xs-6 col-lg-6 col-md-6" id="gender" >
+            <label class="radio-inline">
+                  <input type="radio" name="male" checked="checked">Male
+            </label>
+            <label class="radio-inline">
+                  <input type="radio" name="female">Female
+            </label>
+        </div>
+
+        <div class="form-group col-sm-6 col-xs-6 col-lg-6 col-md-6 "  >
+            Enter birth year.. <input type="number" class="form-control" name="year_of_birth" id="year_of_birth" value="1990" style="align:center"/>
+        </div>
+
+        <hr>
           
           
         <div class="form-group" id="body_location">
+            <h4>Select body part where you have the problem .</h4>
             <select class="form-control" name="body_location_id">            
 
               <option value="16" >Abdomens, pelvis, and buttocks</a></option><!--1-->
@@ -81,24 +105,15 @@
               
               
             </select> 
+            <hr>
  
         </div>
 
-        <div class="form-group" id="gender">
-            <label class="radio-inline">
-                  <input type="radio" name="male">Male
-            </label>
-            <label class="radio-inline">
-                  <input type="radio" name="female">Female
-            </label>
-        </div>
 
-        <div class="form-group"  >
-            <input type="number" class="form-control" name="year_of_birth" id="year_of_birth" style="align:center"/>                               
-          </div>
+          <br>
 
-          <div class="col-xs-6 col-sm-6 col-md-6">
-              <input type="submit" name="submit_mes" value="SEARCH" class="btn btn-lg btn-success btn-block"><hr>
+          <div class="col-xs-12 col-sm-3 col-md-6 col-lg-6 ">
+              <input type="submit" name="step1_complete" value="what next..?" class="btn btn-lg btn-success btn-block"><hr>
           </div>
 
 
@@ -121,12 +136,17 @@
 
 
     </div>
-
-
-
-
-
-
 </body>
 </html>
 
+<?php
+
+        if (isset($_POST['step1_complete'])) 
+            {
+
+                
+                      echo " First step completed..";
+
+            }
+
+?>
