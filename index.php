@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title></title>
+    <title>SymptomDetector</title>
     <!--
     /*this was implementaton by  APImedic , modified by Nilesh Prasad
     <link rel="stylesheet" type="text/css" href="symptom_selector/selector.css?v=1">
