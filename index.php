@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title></title>
@@ -76,12 +79,12 @@
 
 
 
-        <div class="form-group col-sm-6 col-xs-6 col-lg-6 col-md-6" id="gender" >
+        <div class="form-group col-sm-6 col-xs-6 col-lg-6 col-md-6" >
             <label class="radio-inline">
-                  <input type="radio" class="form-check-input" name="gender" id="male"  checked>Male
+                  <input type="radio" class="form-check-input" name="gender" id="male"  value="male" checked>Male
             </label>
             <label class="radio-inline">
-                  <input type="radio" class="form-check-input" name="gender" id="female"  >Female
+                  <input type="radio" class="form-check-input" name="gender" id="female" value="female" >Female
             </label>
         </div>
 
@@ -122,20 +125,7 @@
 
     </div>
 
-    <div class="container" id="body_sublocations">
-
-
-    </div>
-
-    <div class="container" id="gender">
-
-
-    </div>
-
-    <div class="container" id="symptons_body_sublocations">
-
-
-    </div>
+    
 </body>
 </html>
 
@@ -145,23 +135,31 @@
             {
 
                 
-                      //echo " First step completed..";
+                      //echo " First step completed..Second step starts here.....";               
 
-                $gender=$_POST['gender'];
-                $birth_year=$_POST['year_of_birth'];
-                $body_location=$_POST['body_location_id'];   
-                echo '<div class="container" id="body_sublocations">
-                <h4>Select sub-location where you are exactly feeling the problem ..</h4>
-            <select class="form-control" name="body_sublocation_id">   ';
+                $_SESSION['gender']=$_POST['gender'];
+                $_SESSION['birth_year']=$_POST['year_of_birth'];
+                $_SESSION['age']=date('Y')-$_POST['year_of_birth'];
+                
+                //echo $gender;
+               // $birth_year=$_POST['year_of_birth'];
+               // $age=date('Y')-$birth_year;
 
-              /*
-                $url="https://sandbox-healthservice.priaid.ch/body/locations//16?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByYXNhZG5pbGVzaDk2QGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiNzA2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy92ZXJzaW9uIjoiMjAwIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9saW1pdCI6Ijk5OTk5OTk5OSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcCI6IlByZW1pdW0iLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xhbmd1YWdlIjoiZW4tZ2IiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2V4cGlyYXRpb24iOiIyMDk5LTEyLTMxIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwc3RhcnQiOiIyMDE2LTA5LTE2IiwiaXNzIjoiaHR0cHM6Ly9zYW5kYm94LWF1dGhzZXJ2aWNlLnByaWFpZC5jaCIsImF1ZCI6Imh0dHBzOi8vaGVhbHRoc2VydmljZS5wcmlhaWQuY2giLCJleHAiOjE0Nzc3NjA5MTAsIm5iZiI6MTQ3Nzc1MzcxMH0.iiMGYvCdUDutCz2U0OjMPW05ZO7b78tWr__bz4Ow3VI&language=en-gb&format=json";*/
+                $body_location=$_POST['body_location_id'];  
 
+                echo '<div class="container" >
+                          <!-- second form begins -->
+                                <form role="form"  method="POST" action="symptoms_listing.php">'; 
 
-                $url="https://sandbox-healthservice.priaid.ch/body/locations//".$body_location."?token=".$token."&language=en-gb&format=json";
+                                echo '<div class="form-group" >
+                                            <h4>Select sub-location where you are exactly feeling the problem ..</h4>
+                                                    <select class="form-control" name="body_sublocation_id">   ';
+
+             
+                $url_getsublocations="https://sandbox-healthservice.priaid.ch/body/locations//".$body_location."?token=".$token."&language=en-gb&format=json";
               
 
-              $loc_cont = file_get_contents($url);
+              $loc_cont = file_get_contents($url_getsublocations);
               $loc_obj = json_decode($loc_cont,true);   
               //echo $loc_obj;  
               //echo json_encode($loc_obj); 
@@ -174,6 +172,59 @@
                 echo '<option value=' .$loc_obj[$count]['ID']. ">" .$loc_obj[$count]['Name']. "</a></option>";              
 
                 $count++;
+              }
+              echo '</select></div>                  
+                              <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 form-group">
+                                  <input type="submit" name="step2_complete" value="Let me enter my symptoms.." class="btn btn-lg btn-success btn-block"><hr>
+                              </div>
+                        </form>
+                  </div>';
+
+                 
+              //$body_sub_location=$_POST['body_sublocation_id'];
+              if(isset($_POST['step2_complete']))
+              {
+                echo "step 2 completed.......";
+                if($gender=="male")
+                {
+                    if($age<=18)
+                    {
+                        $gender_age='boy';
+
+                    }
+                    else
+                    {
+                        $gender_age='man';
+
+                    }
+
+                }
+                elseif($gender=="female")
+                {
+                    if($age<=18)
+                    {
+                        $gender_age='girl';
+                    }
+                    else
+                    {
+                        $gender_age='woman';
+                    }
+                }
+
+                $body_sub_location=$_POST['body_sublocation_id'];
+                echo $body_sub_location;
+
+                $url_step2="https://sandbox-healthservice.priaid.ch/symptoms/"  .$body_sub_location.  "/".  $gender_age.  "?token=".$token."&language=en-gb&format=json";             
+
+                  $sub_loc_cont = file_get_contents($url_step2);
+                  $sub_loc_obj = json_decode($sub_loc_cont,true);   
+                  //echo $loc_obj;  
+                  //echo json_encode($loc_obj); 
+                  $count_symptom=0;
+
+
+
+
               }
 
 
