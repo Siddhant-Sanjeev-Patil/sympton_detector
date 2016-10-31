@@ -18,16 +18,14 @@ if(isset($_POST['step3_complete']))
                 //var_dump($_POST['symptom_list']);
                 $url_step3="https://sandbox-healthservice.priaid.ch/symptoms/proposed?symptoms=[";                
 
-                $symptoms = $_POST['symptom_list'];
+                //$symptoms = $_POST['symptom_list'];
+                $_SESSION['symptom_list1']=$_POST['symptom_list'];
+                $symptoms = $_SESSION['symptom_list1'];
                                 
                                 $temp_cnt=0;
                                 foreach ($symptoms as $list)
                                 {
-                                  //echo $list."<br />";
-                                  /*$url_step3.=$inverted_comma;  
-                                  $url_step3.= $list;
-                                  $url_step3.= $inverted_comma ;
-                                  $url_step3.=",";*/
+                                  
                                   $sym_list[$temp_cnt]=$list;
                                   $temp_cnt++;
 
