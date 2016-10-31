@@ -1,22 +1,5 @@
 <?php
-/**
- * ApiMedic.com Sample Avatar, a demo implementation of the ApiMedic.com Symptom Checker by priaid Inc, Switzerland
- * 
- * Copyright (C) 2012 priaid inc, Switzerland
- * 
- * This file is part of The Sample Avatar.
- * 
- * This is free implementation: you can redistribute it and/or modify it under the terms of the
- * GNU General Public License Version 3 as published by the Free Software Foundation.
- * 
- * The ApiMedic.com Sample Avatar is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * 
- * See the GNU General Public License for more details. You should have received a copy of the GNU
- * General Public License along this file. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Authors: priaid inc, Switzerland
- */
+
  
     class TokenGenerator
     {

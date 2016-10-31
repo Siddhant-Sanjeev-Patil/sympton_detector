@@ -5,17 +5,7 @@ session_start();
 <html lang="en">
 <head>
     <title>SymptomDetector</title>
-    <!--
-    /*this was implementaton by  APImedic , modified by Nilesh Prasad
-    <link rel="stylesheet" type="text/css" href="symptom_selector/selector.css?v=1">
-    <link rel="stylesheet" type="text/css" href="symptom_selector/fontawesome/assets/css/font-awesome.min.css" />
-    <script src="libs/jquery-1.12.2.min.js"></script>
-    <script src="libs/json2.js"></script>
-    <script src="libs/jquery.imagemapster.min.js?v=1.1"></script>
-    <script src="libs/typeahead.bundle.js"></script>
     
-    <script src="symptom_selector/selector.js?v=3.3"></script>
-    -->
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,25 +33,6 @@ session_start();
 	$token = $_SESSION['userToken'];
 	?>
 
-    <!--
-        /*XXXXXXXX ORIGINAL IMPLEMENTATION BY APIMEDIC XXXXXXXXXXXXXX"*/
-	<script type="text/javascript">
-
-		var userToken = <?php //echo "'".$token."'" ?>;NOTE THE // HERE , IT WASNT THERE ORIGINALLY..
-		
-        $(document).ready(function () {
-            $("#symptomSelector").symptomSelector(
-            {
-                mode: "diagnosis",
-                webservice: "https://sandbox-healthservice.priaid.ch",
-                language: "en-gb",
-                specUrl: "sampleSpecialisationPage",
-                accessToken: userToken
-            });
-        });
-    </script>
-        XXXXXXXXXXXXXXXXXXXXXXXXX
-    -->
 	
 </head>
 <body>
@@ -185,5 +156,5 @@ session_start();
 
             }
 
-            
+
 ?>

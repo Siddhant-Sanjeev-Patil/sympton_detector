@@ -78,12 +78,7 @@ if(isset($_POST['step2_complete']))
 
                             $count_symptom++;
                       }  
-                      /*$i=0;//checking-purpose
-                       while(isset($sub_loc_obj[$i]))
-                       {
-                         echo  $sub_loc_obj[$i]['ID']."<br>";
-                         $i++;
-                       }*/
+                      
 
 
                       
@@ -97,11 +92,6 @@ if(isset($_POST['step2_complete']))
                             {
                                 echo "<div>i am success</div>";
 
-                                //$symptoms = $_POST['symptom_list'];
-                                //foreach ($symptoms as $list)
-                                //{
-                                  //echo $list."<br />";
-                                //}
                             }
 
                       
