@@ -91,7 +91,7 @@ if(isset($_POST['step4_complete']))
                                                     </div>';    
                  */ 
 
-                                $diagnosis_url="https://sandbox-healthservice.priaid.ch/diagnosis/?symptoms=["; 
+                                $diagnosis_url="https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=["; 
                                 $specialisations_url="https://sandbox-healthservice.priaid.ch/diagnosis/specialisations?symptoms=["; 
 
                                 $temp_cnt1=0;
@@ -187,15 +187,28 @@ if(isset($_POST['step4_complete']))
                                 $diagnosis_url.="&language=en-gb&format=json";
                                 $specialisations_url.="&language=en-gb&format=json";
 
-                                var_dump($diagnosis_url);
-                                var_dump($specialisations_url);
+                                var_dump($diagnosis_url);//works awesome
+                                var_dump($specialisations_url);//works awesome
 
+                                $diagnosis_loc_cont = file_get_contents($diagnosis_url);
+                                $diagnosis_loc_obj = json_decode($diagnosis_loc_cont,true);  
 
-                                
+                                $specialisation_loc_cont = file_get_contents($specialisations_url);
+                                $specialisation_loc_obj = json_decode($specialisation_loc_cont,true);      
+                            
+                                echo json_encode($diagnosis_loc_obj);   
+                                echo "<br><br><br>";
 
+                                echo json_encode($specialisation_loc_obj); 
+                                /*
 
+                                /*https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[%22179%22,%22203%22]&gender=male&year_of_birth=1988&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByYXNhZG5pbGVzaDk2QGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiNzA2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy92ZXJzaW9uIjoiMjAwIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9saW1pdCI6Ijk5OTk5OTk5OSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcCI6IlByZW1pdW0iLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xhbmd1YWdlIjoiZW4tZ2IiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2V4cGlyYXRpb24iOiIyMDk5LTEyLTMxIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwc3RhcnQiOiIyMDE2LTA5LTE2IiwiaXNzIjoiaHR0cHM6Ly9zYW5kYm94LWF1dGhzZXJ2aWNlLnByaWFpZC5jaCIsImF1ZCI6Imh0dHBzOi8vaGVhbHRoc2VydmljZS5wcmlhaWQuY2giLCJleHAiOjE0Nzc5MTE0NTAsIm5iZiI6MTQ3NzkwNDI1MH0.Rk1RbTxRTwrTg-3JZHpGCASGSdQeaZBg3ReghalSc4M&language=en-gb&format=json
+            --
 
-                    
+            https://sandbox-healthservice.priaid.ch/diagnosis/?symptoms=[%22179%22,%22203%22]&amp;gender=male&amp;year_of_birth=1990&amp;token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByYXNhZG5pbGVzaDk2QGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiNzA2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy92ZXJzaW9uIjoiMjAwIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9saW1pdCI6Ijk5OTk5OTk5OSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcCI6IlByZW1pdW0iLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xhbmd1YWdlIjoiZW4tZ2IiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2V4cGlyYXRpb24iOiIyMDk5LTEyLTMxIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwc3RhcnQiOiIyMDE2LTA5LTE2IiwiaXNzIjoiaHR0cHM6Ly9zYW5kYm94LWF1dGhzZXJ2aWNlLnByaWFpZC5jaCIsImF1ZCI6Imh0dHBzOi8vaGVhbHRoc2VydmljZS5wcmlhaWQuY2giLCJleHAiOjE0Nzc5MDQzOTIsIm5iZiI6MTQ3Nzg5NzE5Mn0.MQMB5FJqd-JSKMSAySP1t16j7yJ_NOXbt8ZnhtKxlfw
+            */
+
+                                          
 
     }
 ?>
