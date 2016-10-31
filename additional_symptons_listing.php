@@ -58,17 +58,47 @@ if(isset($_POST['step3_complete']))
                                 $proposed_loc_cont = file_get_contents($url_step3);
                                 $proposed_loc_obj = json_decode($proposed_loc_cont,true);                                  
                             
-                                //echo json_encode($proposed_loc_obj); 
+                                //echo json_encode($proposed_loc_obj);                           
+                                $count_proposed_symptom=0;
 
-                                                                 
-                            
-                                echo json_encode($proposed_loc_obj); 
+                                //var_dump($url_step3);  
+
+                                 echo '
+                                          <div class="container">
+                                          <h2>Ohh!! Fine, now tell us if you have any more symptoms listed below.. </h2>
+                                              <!--<h2>Do you have any of the following symptoms?</h2>-->
+                                              <p>Select appropriate checkboxes..</p>
+                                              <form role="form"  method="POST" action="proposed_symptons_listing.php">';
+
+                                             while(isset($proposed_loc_obj[$count_proposed_symptom]))
+                                              {
+                                                
+                                                    //echo '<option value=' .$loc_obj[$count_symptom]['ID']. ">" .$loc_obj[$count]['Name']. "</a></option>";    
+                                                    echo '<div class="checkbox">
+                                                            <label><input type="checkbox" name="proposed_symptom_list[]" value='. $proposed_loc_obj[$count_proposed_symptom]['ID']. '>'. $proposed_loc_obj[$count_proposed_symptom]['Name'].'</label> 
+                                                          </div>';  
 
 
-                                  //$count_symptom=0;
+                                                    $count_proposed_symptom++;
+                                              }
 
-                                var_dump($url_step3);           
-            }
+                                echo ' <div class="col-xs-12 col-sm-3 col-md-6 col-lg-6 ">
+                                       <input type="submit" name="step4_complete" value="Submit" class="btn btn-lg btn-success btn-block"><hr>
+                                            </div>
+                                                </form>
+                                                    </div>';     
+
+                    }
+
+
+
+
+
+
+
+
+
+
         
     /*https://sandbox-healthservice.priaid.ch/symptoms/proposed?symptoms=[%22179%22]&gender=male&year_of_birth=1988&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByYXNhZG5pbGVzaDk2QGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiNzA2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy92ZXJzaW9uIjoiMjAwIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9saW1pdCI6Ijk5OTk5OTk5OSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcCI6IlByZW1pdW0iLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xhbmd1YWdlIjoiZW4tZ2IiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2V4cGlyYXRpb24iOiIyMDk5LTEyLTMxIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwc3RhcnQiOiIyMDE2LTA5LTE2IiwiaXNzIjoiaHR0cHM6Ly9zYW5kYm94LWF1dGhzZXJ2aWNlLnByaWFpZC5jaCIsImF1ZCI6Imh0dHBzOi8vaGVhbHRoc2VydmljZS5wcmlhaWQuY2giLCJleHAiOjE0Nzc4NTM1NzAsIm5iZiI6MTQ3Nzg0NjM3MH0.BctzfP0PtOe_eoHLXs5sUWLUQIL4RJwkz6Cp4s3wtHo&language=en-gb&format=json*/
 
