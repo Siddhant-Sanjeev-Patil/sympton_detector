@@ -13,6 +13,33 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/4ade0e5ef1.js"></script>
+
+  <style type="text/css">
+    
+     #lg_devices_foot
+    {
+      background-color: #121212;
+      position:relative;
+      padding: 10px;           
+      height:50px;
+      color: white;
+      position: relative;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+       #sm_devices_foot
+    {
+
+      background-color: #121212;
+      
+      color:white;
+
+
+    }
+
+    </style>
 
 
 
@@ -158,3 +185,32 @@ session_start();
 
 
 ?>
+
+<footer class=" hidden-xs hidden-sm" id="lg_devices_foot" style="position:fixed;">
+  
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 ">                  
+        <a href="https://github.com/nileshprasad137/sympton_detector">&nbsp;<span class="fa fa-github" style="font-size:25px;"></a> </span>&nbsp;&nbsp;<b>See the code..</b>  
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 ">              
+    </div>
+     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12"  > 
+        <b >&nbsp;&nbsp;<i class="fa fa-envelope" ></i>&nbsp;&nbsp;prasadnilesh96@gmail.com</p></i></b>     
+     </div> 
+  
+        
+</footer>
+
+
+<footer class="container-fluid hidden-md hidden-lg" id="sm_devices_foot">
+  
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 ">                  
+        <a href="https://github.com/nileshprasad137/sympton_detector">&nbsp;<span class="fa fa-github" style="font-size:25px;"></a> </span>&nbsp;&nbsp;<b>See the code...</b>  
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 ">              
+    </div>
+     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12"  > 
+        <b >&nbsp;&nbsp;<i class="fa fa-envelope" ></i>&nbsp;&nbsp;prasadnilesh96@gmail.com</p></i></b>     
+     </div> 
+  
+        
+</footer>
