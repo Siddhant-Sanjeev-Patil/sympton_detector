@@ -138,7 +138,7 @@ if(isset($_POST['step4_complete']))
                                 while(isset($diagnosis_loc_obj[$x]['Issue']['Name']))
                                 {
                                     $disease_name = $diagnosis_loc_obj[$x]['Issue']["Name"];
-                                    $disease_accuracy = $diagnosis_loc_obj[$x]["Issue"]["Accuracy"];
+                                    $disease_accuracy = ceil($diagnosis_loc_obj[$x]["Issue"]["Accuracy"]);
 
                                 echo '
                                 	<div class="container-fluid">
