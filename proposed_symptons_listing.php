@@ -13,6 +13,9 @@ session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <body>
 
 <?php
@@ -128,25 +131,44 @@ if(isset($_POST['step4_complete']))
 
                                 //echo json_encode($specialisation_loc_obj); 
                                 echo '<div class="container">
-                                			<h2>Possible Diseases/Problems</h2></div>';
+                                			<h2>Possible Diseases/Problems</h2>
+                                      </div>';
                                 $x=0;
 
                                 while(isset($diagnosis_loc_obj[$x]['Issue']['Name']))
                                 {
+                                    $disease_name = $diagnosis_loc_obj[$x]['Issue']["Name"];
+                                    $disease_accuracy = $diagnosis_loc_obj[$x]["Issue"]["Accuracy"];
 
                                 echo '
-                                	<div class="container-fluid>"
+                                	<div class="container-fluid">
                                 		<div class="jumbotron" >
-                                  				<b>'.$diagnosis_loc_obj[$x]['Issue']["Name"].'</b><br>'.$diagnosis_loc_obj[$x]['Issue']["Accuracy"].'</div></div>'
-                                		
+                                  				<b>'.$disease_name.'</b>
+                                                <br>'.
+                                                    '<div id="id'.$disease_accuracy.'"></div>
+                                                    <script >
+                                                                                                               
+                                                          $( function() 
+                                                          {
+                                                            $( "#id'.$disease_accuracy.'").progressbar(
+                                                            {
+                                                              value:'.$disease_accuracy.'
+                                                            });
+                                                          } );
+                                                    </script>
+                                                        
+                                        </div>
+                                    </div>
+                                		'
                                 			;
                                 			$x++;
 
                                 }
 
                                 
-
+//value: <?php echo $disease_accuracy ; ? >
                                           
 
     }
 ?>
+
